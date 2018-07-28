@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">Blue Sky Version 1.1</string>
+    <string name="test_text_main">Hello World!</string>
+    <string name="call_title">Call</string>
+    <string name="auto_id_request_title">Auto ID Request</string>
+    <string name="activity_main_title">Main Menu</string>
+    <string name="call_button_text">CALL</string>
+    <string name="auto_id_request_button_text">AUTO ID REQUEST</string>
+    <string name="cert_request_button_text">CERT REQUEST</string>
+    <string name="setup_button_text">SETUP</string>
+    <string name="cert_request_title">Cert Request</string>
+    <string name="setup_title">Setup</string>
+    <string name="agency_phone_name_1">Blue Sky Insurance</string>
+    <string name="agency_phone_name_2">Joel Walker</string>
+    <string name="agency_phone_name_3">Bill Vaughan</string>
+    <string name="agency_phone_num_1">tel:3036455477</string>
+    <string name="agency_phone_num_2">tel:3038425456</string>
+    <string name="agency_phone_num_3">tel:7209888802</string>
+    <string name="auto_year_hint">Year</string>
+    <string name="auto_make_hint">Make</string>
+    <string name="auto_model_hint">Model</string>
+    <string name="auto_vin_hint">VIN Number</string>
+    <string name="liability_radio_button">Liability</string>
+    <string name="full_coverage_radio_button">Full Coverage</string>
+    <string name="add_radio_button">Add</string>
+    <string name="delete_radio_button">Delete</string>
+    <string name="ID_card_check_box_text">Check if you would like an Auto ID Card for this vehicle</string>
+    <string name="submit_button_text">Submit</string>
+    <string name="insured_company_name_hint">Your company name</string>
+    <string name="insured_contact_name_hint">Your first and last name</string>
+    <string name="insured_email_hint">Your email</string>
+    <string name="certholder_company_name_hint">Recipient\'s Company Name</string>
+    <string name="certholder_street_address_hint">Recipient\'s Street Address</string>
+    <string name="certholder_email_hint">Recipient\'s Email</string>
+    <string name="additional_insured_check_box_text">Additional Insured</string>
+    <string name="waiver_check_box_text">Waiver</string>
+    <string name="agency_primary_email">joeylovato1@gmail.com</string>
+    <string name="dialog_call_permissions_message">Before we continue, we need to ask permission to call from this app.</string>
+    <string name="dialog_call_permissions_title">Call Permissions</string>
+    <string name="certholder_city_address_hint">Recipient\'s City</string>
+    <string name="certholder_addess_input">Enter the recipient\'s address:</string>
+    <string name="certholder_zip_address_hint">Zip Code</string>
+    <string name="save_button_text">Save</string>
+    <string name="setup_entry_welcome_text">Welcome to your mobile insurance app!</string>
+
+    <string-array name="state_codes">
+        <item>AL</item>
+        <item>AK</item>
+        <item>AZ</item>
+        <item>AR</item>
+        <item>CA</item>
+        <item>CO</item>
+        <item>CT</item>
+        <item>DE</item>
+        <item>DC</item>
+        <item>FL</item>
+        <item>GA</item>
+        <item>HI</item>
+        <item>ID</item>
+        <item>IL</item>
+        <item>IN</item>
+        <item>IA</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LA</item>
+        <item>ME</item>
+        <item>MD</item>
+        <item>MA</item>
+        <item>MI</item>
+        <item>MN</item>
+        <item>MS</item>
+        <item>MO</item>
+        <item>MT</item>
+        <item>NE</item>
+        <item>NV</item>
+        <item>NH</item>
+        <item>NJ</item>
+        <item>NM</item>
+        <item>NY</item>
+        <item>NC</item>
+        <item>ND</item>
+        <item>OH</item>
+        <item>OK</item>
+        <item>OR</item>
+        <item>PA</item>
+        <item>RI</item>
+        <item>SC</item>
+        <item>SD</item>
+        <item>TN</item>
+        <item>TX</item>
+        <item>UT</item>
+        <item>VT</item>
+        <item>VA</item>
+        <item>WA</item>
+        <item>WV</item>
+        <item>WI</item>
+        <item>WY</item>
+    </string-array>
+
+
+</resources>

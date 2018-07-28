@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/activity_main_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/cert_request_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_title_text">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:scrollbarStyle="insideOverlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/certholder_company_name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:hint="@string/certholder_company_name_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/padding_start_input"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="-191dp"
+                    tools:layout_editor_absoluteY="76dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="107dp" />
+
+                <EditText
+                    android:id="@+id/certholder_email_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:hint="@string/certholder_email_hint"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/padding_start_input"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="-191dp"
+                    tools:layout_editor_absoluteY="76dp" />
+
+
+                <TextView
+                    android:id="@+id/certholder_address_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/certholder_addess_input"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons" />
+
+                <EditText
+                    android:id="@+id/certholder_street_address_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:hint="@string/certholder_street_address_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/padding_start_input"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="-191dp"
+                    tools:layout_editor_absoluteY="76dp" />
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons" />
+
+                <EditText
+                    android:id="@+id/certholder_city_address_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:hint="@string/certholder_city_address_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/padding_start_input"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="-191dp"
+                    tools:layout_editor_absoluteY="76dp" />
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/certholder_state_address_spinner"
+                        android:layout_width="139dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/white"
+                        android:popupBackground="@android:color/white" />
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:id="@+id/certholder_zip_address_input"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:ems="10"
+                        android:hint="@string/certholder_zip_address_hint"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/padding_start_input" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons" />
+
+
+                <CheckBox
+                    android:id="@+id/additional_insured_check_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/white"
+                    android:text="@string/additional_insured_check_box_text"
+                    android:textColor="@android:color/white" />
+
+                <CheckBox
+                    android:id="@+id/waiver_check_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/white"
+                    android:text="@string/waiver_check_box_text"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/cert_request_submit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/submitButton"
+                    android:onClick="sendCertRequestEmail"
+                    android:text="@string/submit_button_text"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/activity_main_title_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/auto_id_request_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_title_text"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:scrollbarStyle="outsideInset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/auto_year_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:hint="@string/auto_year_hint"
+                    android:inputType="phone"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/padding_start_input"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="-191dp"
+                    tools:layout_editor_absoluteY="76dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="107dp" />
+
+                <EditText
+                    android:id="@+id/auto_make_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:hint="@string/auto_make_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/padding_start_input"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="-191dp"
+                    tools:layout_editor_absoluteY="76dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons" />
+
+                <EditText
+                    android:id="@+id/auto_model_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:hint="@string/auto_model_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/padding_start_input"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="-191dp"
+                    tools:layout_editor_absoluteY="76dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_height_standard"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/auto_vin_input"
+                        android:layout_width="299dp"
+                        android:layout_height="@dimen/text_input_height_standard"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:ems="10"
+                        android:hint="@string/auto_vin_hint"
+                        android:inputType="text"
+                        android:maxLength="17"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/padding_start_input"
+                        android:selectAllOnFocus="false"
+                        android:singleLine="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.502"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteX="-191dp"
+                        tools:layout_editor_absoluteY="76dp" />
+
+                    <ImageButton
+                        android:id="@+id/vin_camera_button"
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:background="#00000000"
+                        android:padding="30dp"
+                        android:src="@drawable/ic_camera_white" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_between_buttons"
+                    android:layout_weight="1" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="165dp"
+                    tools:layout_editor_absoluteY="376dp">
+
+
+                    <RadioButton
+                        android:id="@+id/liability_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/liability_radio_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/radio_button_text_size" />
+
+                    <RadioButton
+                        android:id="@+id/full_coverage_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@android:color/white"
+                        android:text="@string/full_coverage_radio_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/radio_button_text_size" />
+
+
+                </RadioGroup>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@android:color/white" />
+
+                <RadioGroup
+                    android:id="@+id/add_delete_radio_button_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="414dp">
+
+                    <RadioButton
+                        android:id="@+id/add_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@android:color/white"
+                        android:onClick="checkBoxVisible"
+                        android:text="@string/add_radio_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/radio_button_text_size" />
+
+                    <RadioButton
+                        android:id="@+id/delete_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:buttonTint="@android:color/white"
+                        android:onClick="checkBoxInvisible"
+                        android:text="@string/delete_radio_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/radio_button_text_size" />
+
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/ID_card_check_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/white"
+                    android:text="@string/ID_card_check_box_text"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/auto_ID_submit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/submitButton"
+                    android:onClick="sendAutoIDRequestEmail"
+                    android:text="@string/submit_button_text"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="test_width">300dp</dimen>
+    <dimen name="test_height">200dp</dimen>
+    <dimen name="main_button_height">100dp</dimen>
+    <dimen name="phone_icon_length">80dp</dimen>
+    <dimen name="phone_button_text_size">26sp</dimen>
+    <dimen name="text_input_height_standard">50dp</dimen>
+    <dimen name="padding_start_input">10dp</dimen>
+    <dimen name="space_between_buttons">15dp</dimen>
+    <dimen name="radio_button_text_size">18sp</dimen>
+    <dimen name="title_text_size">40sp</dimen>
+    <dimen name="button_padding_general">20dp</dimen>
+    <dimen name="setup_entry_welcome_text_size">20sp</dimen>
+</resources>
