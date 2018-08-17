@@ -5,38 +5,43 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/setup_main_title_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/setup_title"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/title_text_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat" >
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/setup_title"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/tool_bar_title_text_size"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="19dp" />
+
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:orientation="vertical"
         android:weightSum="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setup_main_title_text">
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
 
         <EditText
             android:id="@+id/setup_insured_company_name"
@@ -50,6 +55,7 @@
             android:paddingStart="@dimen/padding_start_input"
             android:selectAllOnFocus="false"
             android:singleLine="true"
+            android:textSize="@dimen/hint_text_size_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +78,7 @@
             android:paddingStart="@dimen/padding_start_input"
             android:selectAllOnFocus="false"
             android:singleLine="true"
+            android:textSize="@dimen/hint_text_size_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +101,30 @@
             android:paddingStart="@dimen/padding_start_input"
             android:selectAllOnFocus="false"
             android:singleLine="true"
+            android:textSize="@dimen/hint_text_size_dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="-191dp"
+            tools:layout_editor_absoluteY="76dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_between_buttons" />
+
+        <EditText
+            android:id="@+id/setup_agency_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_height_standard"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:hint="@string/setup_agency_email_hint"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_start_input"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:textSize="@dimen/hint_text_size_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +143,7 @@
             android:onClick="saveOnButtonClick"
             android:text="@string/save_button_text"
             android:textColor="@android:color/white"
-            android:textSize="24sp" />
+            android:textSize="@dimen/submit_button_text_size_dp" />
 
 
     </LinearLayout>

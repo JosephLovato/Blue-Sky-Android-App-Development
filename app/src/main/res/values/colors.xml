@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorBackground">#3465ed</color>
+    <color name="colorPrimaryDark">#004ec4</color>
+    <color name="colorAccent">#c6e2ff</color>
+    <color name="colorBackground">#0066FF</color>
     <color name="submitButton">#1daf3f</color>
-    <color name="colorButton">#ffffff</color>
+    <color name="colorButton">#f0f8ff</color>
+    <color name="gray">#96a2ff</color>
+    <color name="required">#ffa3a3</color>
+    <color name="requiredText">#9e0f0f</color>
 </resources>

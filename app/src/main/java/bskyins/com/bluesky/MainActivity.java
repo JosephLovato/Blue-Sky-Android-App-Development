@@ -3,38 +3,46 @@ package bskyins.com.bluesky;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import bskyins.com.bluesky.Setup;
 
 public class MainActivity extends AppCompatActivity {
-    //First run shared preferences setup
-    SharedPreferences settings = null;
 
     public static final String mypreference = "mypref";
     public static final String CompanyName = "insuredCompanyNameKey";
     public static final String ContactName = "insuredContactNameKey";
     public static final String Email = "insuredEmailKey";
+    public static final String AgencyEmail = "agencyEmailKey";
 
     EditText companyName;
     EditText contactName;
     EditText email;
+    EditText agencyEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        SharedPreferences settings = getSharedPreferences("mypref", 0);
+        //Set up shared preferences to check if this method is being run during the first launch
+        SharedPreferences settings = getSharedPreferences(mypreference, 0);
         //Get "hasLoggedIn" value. If the value doesn't exist yet false is returned
         boolean hasLoggedIn = settings.getBoolean("hasLoggedIn", false);
 
         if(hasLoggedIn)
         {
+            //If the user has already logged in once, set the content view to the Main Activity
             setContentView(R.layout.activity_main);
+
+            //Action Bar Setup
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+            ActionBar ab = getSupportActionBar();
+            ab.setDisplayShowTitleEnabled(false);
         }
         else {
             SharedPreferences.Editor editor = settings.edit();
@@ -45,7 +53,14 @@ public class MainActivity extends AppCompatActivity {
             // Commit the edits!
             editor.commit();
 
+            //Set content view to the entry version of the Setup Screen
             setContentView(R.layout.setup_entry);
+
+            //Action Bar Setup
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+            ActionBar ab = getSupportActionBar();
+            ab.setDisplayShowTitleEnabled(false);
         }
     }
 
@@ -67,27 +82,32 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //sends user to Setup Screen
     public void goToSetup(View view) {
         Intent intent = new Intent(this, Setup.class);
         startActivity(intent);
     }
 
+    //saves information on the Entry version of the setup page, then sends the user to the Main Activity
     public void saveOnButtonClickEntry(View view) {
         //Set all EditText objects to their respective Edit Text xml fields
         companyName = (EditText) findViewById(R.id.setup_entry_insured_company_name);
         contactName = (EditText) findViewById(R.id.setup_entry_insured_contact_name);
         email = (EditText) findViewById(R.id.setup_entry_insured_email);
+        agencyEmail = (EditText) findViewById(R.id.setup_agency_email);
 
         //Set up sharedPreferences again with name "settings"
-        SharedPreferences settings = getSharedPreferences("mypref", 0);
+        SharedPreferences settings = getSharedPreferences(mypreference, 0);
         //save user information
         String cpn = companyName.getText().toString();
         String ctn = contactName.getText().toString();
         String e = email.getText().toString();
+        String ae = agencyEmail.getText().toString();
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(CompanyName, cpn);
         editor.putString(ContactName, ctn);
         editor.putString(Email, e);
+        editor.putString(AgencyEmail, ae);
         editor.commit();
 
         //Toast for user to be sure information is saved
@@ -98,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         Toast autoToast = Toast.makeText(context, text, duration);
         autoToast.show();
 
-        //sends user to Main Screen
+        //sends user to Main Activity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 

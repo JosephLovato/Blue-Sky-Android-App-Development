@@ -12,7 +12,10 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -34,6 +37,7 @@ public class AutoIDRequest extends AppCompatActivity {
     public static final String CompanyName = "insuredCompanyNameKey";
     public static final String ContactName = "insuredContactNameKey";
     public static final String Email = "insuredEmailKey";
+    public static final String AgencyEmail = "agencyEmailKey";
 
     public String prefBody = "";
 
@@ -43,29 +47,27 @@ public class AutoIDRequest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auto_id_request);
+
+        //Action Bar Setup
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowTitleEnabled(false);
+
+        //Initially set the ID-Card Check box to be invisible to the user
         CheckBox IDCardCheckBox = (CheckBox) findViewById(R.id.ID_card_check_box);
         IDCardCheckBox.setVisibility(View.INVISIBLE);
 
-        //Check Camera Permissions
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // No explanation needed; request the permission
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    2);
-
-        } else {
-            // Permission has already been granted
-        }
-
     }
 
-
+    //makes the ID-Check Box visible
     public void checkBoxVisible(View view) {
         CheckBox IDCardCheckBox = (CheckBox) findViewById(R.id.ID_card_check_box);
         IDCardCheckBox.setVisibility(View.VISIBLE);
     }
 
+    //makes the ID-Check Box invisible again
     public void checkBoxInvisible(View view) {
         boolean f = false;
         CheckBox IDCardCheckBox = (CheckBox) findViewById(R.id.ID_card_check_box);
@@ -73,130 +75,135 @@ public class AutoIDRequest extends AppCompatActivity {
         IDCardCheckBox.setChecked(false);
     }
 
+    //sends the the Auto ID Request Email using the JavaMail Api and the
     public void sendAutoIDRequestEmail(View arg0) {
 
-        //Create sharedpreferences object
-        sharedpreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
-
-        //get all insured (user) variables
-        String insuredCompanyName = sharedpreferences.getString(CompanyName, "");
-        String insuredContactName = sharedpreferences.getString(ContactName, "");
-        String insuredEmail = sharedpreferences.getString(Email, "");
-
-        //create all four editText objects and retrieve inputted text
+        //create all four editText objects
         EditText autoYear = (EditText) findViewById(R.id.auto_year_input);
         EditText autoMake = (EditText) findViewById(R.id.auto_make_input);
         EditText autoModel = (EditText) findViewById(R.id.auto_model_input);
         EditText autoVin = (EditText) findViewById(R.id.auto_vin_input);
 
-        String autoYearText = autoYear.getText().toString();
-        String autoMakeText = autoMake.getText().toString();
-        String autoModelText = autoModel.getText().toString();
-        String autoVinText = autoVin.getText().toString();
-
-        //create four radio button objects and one check box objects and retrieve boolean values for if they were selected
+        //create four radio button objects and one check box objects
         RadioButton liability = (RadioButton) findViewById(R.id.liability_radio_button);
         RadioButton fullCoverage = (RadioButton) findViewById(R.id.full_coverage_radio_button);
         RadioButton add = (RadioButton) findViewById(R.id.add_radio_button);
         RadioButton delete = (RadioButton) findViewById(R.id.delete_radio_button);
         CheckBox autoID = (CheckBox) findViewById(R.id.ID_card_check_box);
 
-        boolean liabilityBool = liability.isChecked();
-        boolean fullCoverageBool = fullCoverage.isChecked();
-        boolean addBool = add.isChecked();
-        boolean deleteBool = delete.isChecked();
-        boolean autoIDBool = autoID.isChecked();
+        //
+        // REQUIRED (Checks if every required field is not empty.
+        // If any field is empty, highlight field in red
+        //
 
+        boolean autoYearEmpty = TextUtils.isEmpty(autoYear.getText());
+        boolean autoMakeEmpty = TextUtils.isEmpty(autoMake.getText());
+        boolean autoModelEmpty = TextUtils.isEmpty(autoModel.getText());
+        boolean autoVinEmpty = TextUtils.isEmpty(autoVin.getText());
+        boolean liabilityFullCoverageEmpty = !liability.isChecked() && !fullCoverage.isChecked();
+        boolean addDeleteEmpty = !add.isChecked() && !delete.isChecked();
 
-        //Fill in string with all preferences for liability OR full coverage, add OR delete, and if auto ID is needed (string instiated above)
-
-        if (liabilityBool) {
-            prefBody += ("LIABILITY\n");
-        }
-
-        if (fullCoverageBool) {
-            prefBody += ("FULL COVERAGE\n");
-        }
-
-        if (deleteBool) {
-            prefBody += ("DELETE\n");
-        }
-
-        if (addBool) {
-            prefBody += ("ADD\n");
-            if (autoIDBool) {
-                prefBody += ("Needs Auto ID Card\n");
+        if(autoYearEmpty || autoMakeEmpty || autoModelEmpty || autoVinEmpty || liabilityFullCoverageEmpty || addDeleteEmpty) {
+            if(autoYearEmpty) {
+                autoYear.setBackgroundColor(getResources().getColor(R.color.required));
+                autoYear.setHintTextColor(getResources().getColor(R.color.requiredText));
+            }
+            if(autoMakeEmpty) {
+                autoMake.setBackgroundColor(getResources().getColor(R.color.required));
+                autoMake.setHintTextColor(getResources().getColor(R.color.requiredText));
+            }
+            if(autoModelEmpty) {
+                autoModel.setBackgroundColor(getResources().getColor(R.color.required));
+                autoModel.setHintTextColor(getResources().getColor(R.color.requiredText));
+            }
+            if(autoVinEmpty) {
+                autoVin.setBackgroundColor(getResources().getColor(R.color.required));
+                autoVin.setHintTextColor(getResources().getColor(R.color.requiredText));
+            }
+            if(liabilityFullCoverageEmpty) {
+                liability.setTextColor(getResources().getColor(R.color.required));
+                fullCoverage.setTextColor(getResources().getColor(R.color.required));
+            }
+            if(addDeleteEmpty) {
+                add.setTextColor(getResources().getColor(R.color.required));
+                delete.setTextColor(getResources().getColor(R.color.required));
             }
         }
 
+        //
+        // ELSE, proceed with sending email:
+        //
+        else{
+            //Create sharedPreferences object
+            sharedpreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
 
-        //retrieve the agency's primary email
-        String agencyPrimaryEmail = getString(R.string.agency_primary_email);
+            //get all insured (user) variables
+            String insuredCompanyName = sharedpreferences.getString(CompanyName, "");
+            String insuredContactName = sharedpreferences.getString(ContactName, "");
+            String insuredEmail = sharedpreferences.getString(Email, "");
+            String agencyEmail = sharedpreferences.getString(AgencyEmail, "");
 
-        //send email
-        //Getting content for email
-        String email = agencyPrimaryEmail;
-        String emailCC = insuredEmail;
-        String subject = "***Auto ID Request from: " + insuredCompanyName + "***";
-        String message = "*************AUTO ID REQUEST***********\n" +
-                insuredContactName + " from " + insuredCompanyName + " has requested:\n" +
-                autoYearText + "\n" + autoMakeText + "\n" + autoModelText + "\n" + autoVinText + "\n" +
-                prefBody;
+            //retrieve inputted text from editText objects
+            String autoYearText = autoYear.getText().toString();
+            String autoMakeText = autoMake.getText().toString();
+            String autoModelText = autoModel.getText().toString();
+            String autoVinText = autoVin.getText().toString();
+
+            //retrieve boolean values if respective radio buttons were selected
+            boolean liabilityBool = liability.isChecked();
+            boolean fullCoverageBool = fullCoverage.isChecked();
+            boolean addBool = add.isChecked();
+            boolean deleteBool = delete.isChecked();
+            boolean autoIDBool = autoID.isChecked();
 
 
-        //Creating SendMail object
-        SendMail sm = new SendMail(this, email, emailCC, subject, message);
-
-        //Executing sendmail to send email
-        sm.execute();
-
-        //Send back to main activity
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void takePicutre(View arg0) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
+            //Fill in "prefBody" with all preferences for liability OR full coverage, add OR delete, and if auto ID is needed (string instantiated above)
+            if (liabilityBool) {
+                prefBody += ("LIABILITY\n");
             }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.android.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+
+            if (fullCoverageBool) {
+                prefBody += ("FULL COVERAGE\n");
             }
+
+            if (deleteBool) {
+                prefBody += ("DELETE\n");
+            }
+
+            if (addBool) {
+                prefBody += ("ADD\n");
+                if (autoIDBool) {
+                    prefBody += ("Needs Auto ID Card\n");
+                }
+            }
+
+
+            //retrieve the agency's primary email
+            String agencyPrimaryEmail = getString(R.string.agency_primary_email);
+
+            //Send email:
+            //Getting content for email
+            String email = agencyEmail;
+            String emailCC = insuredEmail;
+            String subject = "***Auto ID Request from: " + insuredCompanyName + "***";
+            String message = "*************AUTO ID REQUEST***********\n" +
+                    insuredContactName + " from " + insuredCompanyName + " has requested:\n" +
+                    autoYearText + "\n" + autoMakeText + "\n" + autoModelText + "\n" + autoVinText + "\n" +
+                    prefBody;
+
+
+            //Creating SendMail object
+            SendMail sm = new SendMail(this, email, emailCC, subject, message);
+
+            //Executing SendMail to send email
+            sm.execute();
+
+            //Send back to main activity
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
+
     }
-
-    String mCurrentPhotoPath;
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
-
 
 }
 
